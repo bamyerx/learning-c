@@ -1,4 +1,5 @@
-/* Project #2 from chapter 2 of C Programming by K.N. King.
+/* 
+ * Project #2 from chapter 2 of C Programming by K.N. King.
  *
  * Computes the volume of a sphere with a 10-meter radius.
  */

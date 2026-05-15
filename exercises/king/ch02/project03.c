@@ -1,4 +1,5 @@
-/* Project #3 from chapter 2 of C Programming by K.N. King.
+/*
+ * Project #3 from chapter 2 of C Programming by K.N. King.
  *
  * Computes the volume of a sphere with a user-defined radius.
  */
