@@ -15,7 +15,7 @@ int main(void)
     printf("Enter an amount: ");
     scanf("%f", &amount);
 
-    amount_with_tax = amount * (1 + TAX_RATE);
+    amount_with_tax = amount * (1.0f + TAX_RATE);
 
     printf("With tax added: $%.2f\n", amount_with_tax);
 

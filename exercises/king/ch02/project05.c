@@ -13,7 +13,12 @@ int main(void)
     printf("Enter a value for x: ");
     scanf("%f", &x);
 
-    fx = 3 * x*x*x*x*x + 2 * x*x*x*x - 5 * x*x*x - x*x + 7 * x - 6;
+    fx = 3 * x * x * x * x * x
+         + 2 * x * x * x * x
+         - 5 * x * x * x
+         - x * x
+         + 7 * x
+         - 6;
 
     printf("f(x) = %.2f\n", fx);
 
