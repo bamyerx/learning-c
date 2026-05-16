@@ -10,10 +10,8 @@ a.out
 *.d
 
 # Build output directories
-build/*
-!build/.gitkeep
-bin/*
-!bin/.gitkeep
+build/
+bin/
 
 # Editor noise
 .vscode/
