@@ -24,6 +24,10 @@ int main(void)
         &a41, &a42, &a43, &a44
     );
 
+    printf("%2d %2d %2d %2d\n", a11, a12, a13, a14);
+    printf("%2d %2d %2d %2d\n", a21, a22, a23, a24);
+    printf("%2d %2d %2d %2d\n", a31, a32, a33, a34);
+    printf("%2d %2d %2d %2d\n", a41, a42, a43, a44);
     printf("Row sums: %d %d %d %d\n",
         a11 + a12 + a13 + a14,
         a21 + a22 + a23 + a24,

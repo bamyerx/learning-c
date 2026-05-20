@@ -17,7 +17,7 @@ int main(void)
     printf("Group identifier: %d\n", group);
     printf("Publisher code: %d\n", publisher);
     printf("Item number: %d\n", item);
-    printf("Check digit: %.1d\n", check_digit);
+    printf("Check digit: %d\n", check_digit);
 
     return 0;
 }
