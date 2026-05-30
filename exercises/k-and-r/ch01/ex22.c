@@ -86,5 +86,7 @@ int main(void)
       i += j;
       j = 0;
    }
+
+   return 0;
 }
 
