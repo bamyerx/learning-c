@@ -54,7 +54,7 @@ int main(void)
             } else {
                error = TRUE;
                printf("Syntax error: mismatched delimiters: ");
-               printf("%c does not match %c\n", peek(), c);
+               printf("'%c' does not match '%c'\n", peek(), c);
             }
          }
       } else if (state == COMMENT) {
