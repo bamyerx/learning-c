@@ -17,7 +17,7 @@
 int main(void)
 {
    int letters_seen[26] = {0};
-   int c, i, sum;
+   int c, i;
 
    printf("Enter first word: ");
    while ((c = getchar()) != '\n') {
@@ -29,12 +29,10 @@ int main(void)
       if (toupper(c) >= 'A' && toupper(c) <= 'Z')
          letters_seen[toupper(c) - 'A']--;
    }
-   for (i = 0, sum = 0; i < 26; i++)
-      sum += letters_seen[i];
-   if (sum)
-      printf("The words are not anagrams.\n");
-   else
-      printf("The words are anagrams.\n");
+   for (i = 0; i < 26; i++)
+      if (letters_seen != 0)
+          printf("The words are not anagrams.\n");
+   printf("The words are anagrams.\n");
 
    return 0;
 }
