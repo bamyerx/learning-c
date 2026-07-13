@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINES  5000		/* max #lines to be sorted */
+#define MAXLINES  5000		/* max # lines to be sorted */
 #define MAXLEN    1000		/* max length of any input line */
 #define ALLOCSIZE 10000		/* available space for line chars */
 
@@ -14,7 +14,6 @@ char *lineptr[MAXLINES];	/* pointers to text lines */
 
 int readlines(char *lineptr[], int nlines, char storage[]);
 void writelines(char *lineptr[], int nlines);
-
 void qsort(char *lineptr[], int left, int right);
 
 /* sort input lines */
@@ -39,8 +38,9 @@ int getline(char *, int);
 int readlines(char *lineptr[], int maxlines, char storage[])
 {
 	int len, nlines;
-	char line[MAXLEN], *p = storage;
+	char *p, line[MAXLEN];
 
+	p = storage;
 	nlines = 0;
 	while ((len = getline(line, MAXLEN)) > 0)
 		if (nlines >= maxlines || storage + ALLOCSIZE - p < len)
