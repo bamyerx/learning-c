@@ -1,6 +1,18 @@
 /*
  * Exercise 5-20 from K&R: Expand dcl to handle declarations with function
  * argument types, qualifiers like const, and so on.
+ *
+ * Note: dcl implements a simplified subset of the C declarator grammar.
+ * In particular, the following features are excluded:
+ *     - typedef storage class specifier
+ *     - struct-or-union-specifier, enum-specifier, and typedef-name type
+ *       specifier productions
+ *     - variadic functions and the parameter-type-list production
+ *     - abstract-declarator and direct-abstract-declarator productions
+ *     - expressions in array declarators (only integer constants are accepted)
+ *
+ * Parameter declarations may therefore contain a declaration specifier list
+ * or a declaration specifier list followed by a named declarator.
  */
 
 #include <ctype.h>
@@ -8,6 +20,7 @@
 #include <string.h>
 
 #define MAXTOKEN 100
+#define MAXOUT   1000
 
 enum { NAME, NUMBER, TYPE_SPECIFIER, TYPE_QUALIFIER, STORAGE_CLASS };
 enum { SUCCESS, FAILURE };	/* return codes for parsing functions */
@@ -22,11 +35,9 @@ const int nstorage_classes = 4;
 
 int dcl(void);
 int dirdcl(void);
-void pointer(void);
-void type_qualifier_list(void);
 int parameter_list(void);
 int parameter_declaration(void);
-void declaration_specifiers(void);
+void declaration_specifiers(char []);
 int is_declaration_specifier(void);
 int identifier_list(void);
 
@@ -34,28 +45,27 @@ int gettoken(void);
 int tokentype;           /* type of last token */
 int getch(void);
 void ungetch(int);
-char token[MAXTOKEN+1];    /* last token string */
-char name[MAXTOKEN+1];     /* identifier name */
-char datatype[MAXTOKEN+1]; /* data type = char, int, etc. */
-char out[1000];
+char token[MAXTOKEN+1];        /* last token string */
+char name[MAXTOKEN+1];         /* identifier name */
+char out[MAXOUT+1];
 
 int main(void)  /* convert declaration to words */
 {
 	int c;
+	char specs[MAXTOKEN+1];
 
 	while (gettoken() != EOF) {    /* 1st token on line is the datatype */
 		name[0] = '\0';
 		out[0] = '\0';
-		datatype[0] = '\0';
+		specs[0] = '\0';
 		if (is_declaration_specifier())
-			declaration_specifiers();
+			declaration_specifiers(specs);
 		if (dcl() == SUCCESS && tokentype == '\n')
-			printf("%s: %s %s\n", name, out, datatype);
-		else {
-			printf("syntax error: unexpected '%c'\n", tokentype);
-			while ((c = getch()) != '\n' && c != EOF)
-				;
-		}
+			printf("%s:%s %s\n", name, out, specs);
+		else
+			if (tokentype != '\n' && tokentype != EOF)
+				while ((c = getch()) != '\n' && c != EOF)
+					;
 	}
 
 	return 0;
@@ -117,16 +127,50 @@ void ungetch(int c)
 		buf[bufp++] = c;
 }
 
+#define MAXPTRS 20
+
 /* dcl: parse a declarator
  *
  * declarator:
  *     pointer? direct-declarator
+ *
+ * pointer:
+ *     * type-qualifier-list?
+ *     * type-qualifier-list pointer
+ *
+ * type-qualifier-list:
+ *     TYPE_QUALIFIER
+ *     type-qualifier-list TYPE_QUALIFIER
  */
 int dcl(void)
 {
-	if (tokentype == '*')
-		pointer();
-	return dirdcl();
+	int nptrs = 0;
+	char ptr_buf[MAXPTRS][MAXTOKEN+1];
+
+	if (tokentype == '\n' || tokentype == EOF) {
+		printf("error: unexpected end of input\n");
+		return FAILURE;
+	}
+	while (tokentype == '*') {
+		if (nptrs >= MAXPTRS) {
+			printf("error: too many pointer levels\n");
+			return FAILURE;
+		}
+		ptr_buf[nptrs][0] = '\0';
+		gettoken();
+		while (tokentype == TYPE_QUALIFIER) {
+			strcat(ptr_buf[nptrs], " ");
+			strcat(ptr_buf[nptrs], token);
+			gettoken();
+		}
+		strcat(ptr_buf[nptrs], " pointer to");
+		nptrs++;
+	}
+	if (dirdcl() == FAILURE)
+		return FAILURE;
+	while (nptrs-- > 0)
+		strcat(out, ptr_buf[nptrs]);
+	return SUCCESS;
 }
 
 /* dirdcl: parse a direct declarator
@@ -140,9 +184,18 @@ int dcl(void)
  */
 int dirdcl(void)
 {
-	if (tokentype == NAME)
-		strcpy(name, token);
-	else if (tokentype == '(') {
+	if (tokentype == '\n' || tokentype == EOF) {
+		printf("error: unexpected end of input\n");
+		return FAILURE;
+	}
+	if (tokentype == NAME) {
+		if (strcmp(name, "") == 0)
+			strcpy(name, token);
+		else {
+			strcat(out, " ");
+			strcat(out, token);
+		}
+	} else if (tokentype == '(') {
 		gettoken();
 		if (dcl() == FAILURE)
 			return FAILURE;
@@ -168,7 +221,7 @@ int dirdcl(void)
 				return FAILURE;
 			}
 		} else if (tokentype == '(') {
-			strcat(out, " function returning");
+			strcat(out, " function taking (");
 			gettoken();
 			if (is_declaration_specifier()) {
 				if (parameter_list() == FAILURE)
@@ -184,37 +237,10 @@ int dirdcl(void)
 				printf("error: missing )\n");
 				return FAILURE;
 			}
+			strcat(out, ") returning");
 		}
 	}
 	return SUCCESS;
-}
-
-/* pointer: parse a pointer
- *
- * pointer:
- *     * type-qualifier-list?
- *     * type-qualifier-list? pointer
- */
-void pointer(void)
-{
-	gettoken();
-	if (tokentype == TYPE_QUALIFIER)
-		type_qualifier_list();
-	if (tokentype == '*')
-		pointer();
-	strcat(out, " pointer to");
-}
-
-/* type_qualifier_list: consume type qualifier tokens
- *
- * type-qualifier-list:
- *     TYPE_QUALIFIER
- *     type-qualifier-list TYPE_QUALIFIER
- */
-void type_qualifier_list(void)
-{
-	while (gettoken() == TYPE_QUALIFIER)
-		;
 }
 
 /* parameter_list: parse a parameter list
@@ -228,6 +254,7 @@ int parameter_list(void)
 	if (parameter_declaration() == FAILURE)
 		return FAILURE;
 	while (tokentype == ',') {
+		strcat(out, ", ");
 		gettoken();
 		if (!is_declaration_specifier()) {
 			printf("error: expected declaration specifier\n");
@@ -236,18 +263,31 @@ int parameter_list(void)
 		if (parameter_declaration() == FAILURE)
 			return FAILURE;
 	}
+	if (tokentype != ')') {
+		printf("error: missing , or )\n");
+		return FAILURE;
+	}
 	return SUCCESS;
 }
 
 /* parameter_declaration: parse a parameter-declaration
  *
  * parameter-declaration:
- *     declaration-specifiers declarator
+ *     declaration-specifiers declarator?
+ *
+ * Note: abstract-declarators are excluded from the grammar. 
  */
 int parameter_declaration(void)
 {
-	declaration_specifiers();
-	return dcl();
+	char specs[MAXTOKEN+1];
+
+	specs[0] = '\0';
+	declaration_specifiers(specs);
+	strcat(out, specs);
+	if (tokentype == '*' || tokentype == NAME || tokentype == '(')
+		if (dcl() == FAILURE)
+			return FAILURE;
+	return SUCCESS;
 }
 
 /* declaration_specifiers: consume declaration specifiers
@@ -257,12 +297,13 @@ int parameter_declaration(void)
  *     type-specifier declaration-specifiers?
  *     type-qualifier declaration-specifiers?
  */
-void declaration_specifiers(void)
+void declaration_specifiers(char specs[])
 {
 	do {
-		strcat(datatype, " ");
-		strcat(datatype, token);
+		strcat(specs, token);
 		gettoken();
+		if (is_declaration_specifier())
+			strcat(specs, " ");
 	} while (is_declaration_specifier());
 }
 
@@ -282,11 +323,14 @@ int is_declaration_specifier(void)
  */
 int identifier_list(void)
 {
+	strcat(out, token);
 	while (gettoken() == ',') {
+		strcat(out, ", ");
 		if (gettoken() != NAME) {
 			printf("error: expected identifier\n");
 			return FAILURE;
 		}
+		strcat(out, token);
 	}
 	return SUCCESS;
 }
