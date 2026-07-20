@@ -13,10 +13,5 @@ a.out
 build/
 bin/
 
-# Editor noise
-.vscode/
-*.swp
-*.swo
-
 # Other
 scratch/
