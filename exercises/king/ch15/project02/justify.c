@@ -1,4 +1,8 @@
-/* Formats a file of text */
+/*
+ * Project 2 from Chapter 15 of King: Modify the justify program of Section 15.3
+ * by having the read_word function (instead of main) store the * character at
+ * the end of a word that's been truncated.
+ */
 
 #include <string.h>
 #include <stdio.h>

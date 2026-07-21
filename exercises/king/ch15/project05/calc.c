@@ -1,6 +1,7 @@
 /*
- * Evaluates Reverse Polish Notation (RPN) expressions with single-digit integer 
- * operands.
+ * Project 5 from Chapter 15 of King: Modify Programming Project 6 from Chapter
+ * 10 so that it has separate stack.h and stack.c files, as described in Section
+ * 15.2.
  */
 
 #include <stdio.h>
