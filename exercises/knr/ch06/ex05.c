@@ -43,12 +43,16 @@ char *strdup(char *);
 struct nlist *install(char *name, char *defn)
 {
 	struct nlist *np;
+	char *cp;
 	unsigned hashval;
 
+	if ((cp = strdup(defn)) == NULL)
+		return NULL;
 	if ((np = lookup(name)) == NULL) {
 		np = malloc(sizeof(*np));
 		if (np == NULL || (np->name = strdup(name)) == NULL) {
 			free(np);
+			free(cp);
 			return NULL;
 		}
 		hashval = hash(name);
@@ -56,11 +60,7 @@ struct nlist *install(char *name, char *defn)
 		hashtab[hashval] = np;
 	} else
 		free(np->defn);
-	if ((np->defn = strdup(defn)) == NULL) {
-		free(np->name);
-		free(np);
-		return NULL;
-	}
+	np->defn = cp;
 	return np;
 }
 
