@@ -2,16 +2,7 @@
 *.o
 
 # Executables
-*.out
-*.exe
 a.out
 
-# Make dependency files
-*.d
-
-# Build output directories
-build/
-bin/
-
 # Other
-scratch/
+test
