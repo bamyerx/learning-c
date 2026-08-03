@@ -20,12 +20,12 @@ int space_remaining(void);
 /*
  * write_line: Writes the current line with justification.
  */
-void write_line(void);
+void write_line(FILE *fp);
 
 /*
  * flush_line: Writes the current line without justification. If the line is
  *             empty, does nothing.
  */
-void flush_line(void);
+void flush_line(FILE *fp);
 
 #endif

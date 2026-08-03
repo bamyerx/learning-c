@@ -32,27 +32,29 @@ int space_remaining(void)
 	return MAX_LINE_LEN - line_len;
 }
 
-void write_line(void)
+void write_line(FILE *fp)
 {
 	int extra_spaces, spaces_to_insert, i, j;
 
 	extra_spaces = MAX_LINE_LEN - line_len;
 	for (i = 0; i < line_len; i++) {
 		if (line[i] != ' ')
-			putchar(line[i]);
+			fputc(line[i], fp);
 		else {
 			spaces_to_insert = extra_spaces / (num_words - 1);
 			for (j = 1; j <= spaces_to_insert + 1; j++)
-				putchar(' ');
+				fputc(' ', fp);
 			extra_spaces -= spaces_to_insert;
 			num_words--;
 		}
 	}
-	putchar('\n');
+	fputc('\n', fp);
 }
 
-void flush_line(void)
+void flush_line(FILE *fp)
 {
-	if (line_len > 0)
-		puts(line);
+	if (line_len > 0) {
+		fputs(line, fp);
+		fputc('\n', fp);
+	}
 }

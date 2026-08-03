@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include "word.h"
 
-int read_char(void)
+int read_char(FILE *fp)
 {
-	int ch = getchar();
+	int ch = getc(fp);
 
 	if (ch == '\n' || ch == '\t')
 		return ' ';
 	return ch;
 }
 
-int read_word(char *word, int len)
+int read_word(FILE *fp, char *word, int len)
 {
 	int ch, pos = 0;
 
-	while ((ch = read_char()) == ' ')
+	while ((ch = read_char(fp)) == ' ')
 		;
 	while (ch != ' ' && ch != EOF) {
 		if (pos < len)
 			word[pos++] = ch;
-		ch = read_char();
+		ch = read_char(fp);
 	}
 	word[pos] = '\0';
 	return pos;
