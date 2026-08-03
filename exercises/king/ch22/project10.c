@@ -10,8 +10,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define NAME_LEN 25
+#define MAX_FILENAME 100
 
 struct part {
 	int number;
@@ -29,6 +31,7 @@ void update(void);
 void print(void);
 void dump(void);
 void restore(void);
+int read_line(char [], int);
 
 /*
  * main: Prompts the user to enter an operation code, then calls a function to
@@ -188,16 +191,16 @@ void dump(void)
 
 	printf("Enter name of output file: ");
 	scanf("%s", filename);
-	if ((fp = fopen(filename, "wb")) != NULL) {
-		for (pp = inventory; pp->next != NULL; pp = pp->next) {
-			fwrite(&pp->number, sizeof(pp->number), 1, fp);
-			fwrite(pp->name, sizeof(pp->name), 1, fp);
-			fwrite(&pp->on_hane, sizeof(pp->on_hand), 1, fp);
-			pp = pp->next;
-		}
-		fclose(fp);
-	} else
+	if ((fp = fopen(filename, "wb")) == NULL) {
 		printf("Dump unsuccessful: can't open %s\n", filename);
+		return;
+	}
+	for (pp = inventory; pp != NULL; pp = pp->next) {
+		fwrite(&pp->number, sizeof(pp->number), 1, fp);
+		fwrite(pp->name, sizeof(pp->name), 1, fp);
+		fwrite(&pp->on_hand, sizeof(pp->on_hand), 1, fp);
+	}
+	fclose(fp);
 }
 
 /*
@@ -207,27 +210,34 @@ void restore(void)
 {
 	char filename[MAX_FILENAME];
 	FILE *fp;
-	struct part *pp, *new_node;
+	struct part temp, *new_node, *tail;
 
 	printf("Enter name of input file: ");
 	scanf("%s", filename);
-	if ((fp = fopen(filename, "rb")) != NULL) {
-		inventory = NULL;
-		while (fread(&pp->number, sizeof(pp->number), 1, fp) == 1 &&
-			   fread(pp->name, sizeof(pp->name), 1, fp) == 1 &&
-			   fread(&pp->on_hand, sizeof(pp->on_hand), 1, fp) == 1) {
-			if ((new_node = malloc(sizeof(struct part))) == NULL) {
-				fprintf(stderr, "database is full; can't add more parts.\n");
-				exit(EXIT_FAILURE);
-			}
-			new_node->number = pp->number;
-			new_node->name = pp->name;
-			new_node->on_hand = pp->on_hand;
-			new_
-		}
-		fclose(fp);
-	} else
+	if ((fp = fopen(filename, "rb")) == NULL) {
 		printf("Restore unsuccessful: can't open %s\n", filename);
+		return;
+	}
+	inventory = NULL;
+	while (fread(&temp.number, sizeof(temp.number), 1, fp) == 1 &&
+		   fread(temp.name, sizeof(temp.name), 1, fp) == 1 &&
+		   fread(&temp.on_hand, sizeof(temp.on_hand), 1, fp) == 1) {
+		if ((new_node = malloc(sizeof(struct part))) == NULL) {
+			fprintf(stderr, "database is full; can't add more parts.\n");
+			exit(EXIT_FAILURE);
+		}
+		if (inventory == NULL) {
+			inventory = new_node;
+			tail = new_node;
+		}
+		new_node->number = temp.number;
+		memcpy(new_node->name, temp.name, sizeof(temp.name));
+		new_node->on_hand = temp.on_hand;
+		new_node->next = NULL;
+		tail->next = new_node;
+		tail = new_node;
+	}
+	fclose(fp);
 }
 
 #include <ctype.h>
