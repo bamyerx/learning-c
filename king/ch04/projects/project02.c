@@ -1,10 +1,6 @@
 /*
- * Project 2 from chapter 4 of C Programming by K.N. King.
- *
- * Asks the user to enter a three-digit number, then prints the number with
- * its digits reversed.
- *
- * Note: must read the number using %d, then break it into three digits.
+ * Project 2 from Chapter 4 of King: Extend the program in Programming Project 1
+ * to handle three-digit numbers.
  */
 
 #include <stdio.h>

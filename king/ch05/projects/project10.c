@@ -1,7 +1,13 @@
 /*
- * Project 10 from chapter 5 of C Programming by K.N. King.
+ * Project 10 from Chapter 5 of King: Using the switch statement, write a
+ * program that converts a numerical grade into a letter grade:
  *
- * Converts a numerical grade into a letter grade.
+ *     Enter numerical grade: 84
+ *     Letter grade: B
+ *
+ * Use the following grading scale: A = 90-100, B = 80-89, C = 70-79, D = 60-69
+ * F = 0-59. Print an error message if the grade is larger than 100 or less than
+ * 0.
  */
 
 #include <stdio.h>

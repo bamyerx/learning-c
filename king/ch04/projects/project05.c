@@ -1,7 +1,10 @@
 /*
- * Project 5 of chapter 4 of C Programming by K.N. King.
+ * Project 5 of Chapter 4 of King: Rewrite the upc.c program of Section 4.1 so
+ * that the user enters 11 digits at one time, instead of entering one digit,
+ * then five digits, and then another five digits.
  *
- * Computes a Universal Product Code check digit.
+ *     Enter the first 11 digits of a UPC: 01380015173
+ *     Check digit: 5
  */
 
 #include <stdio.h>

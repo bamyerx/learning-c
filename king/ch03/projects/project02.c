@@ -1,7 +1,18 @@
 /*
- * Project 2 from chapter 3 of C Programming by K.N. King.
+ * Project 2 from Chapter 3 of King: Write a program that formats product
+ * information entered by the user. A session with the program should look like
+ * this:
  *
- * Formats product information entered by the user.
+ *     Enter item number: 583
+ *     Enter unit price: 13.5
+ *     Enter purchase date (mm/dd/yyyy): 10/24/2010
+ *
+ *     Item            Unit            Purchase
+ *                     Price           Date
+ *     583             $  13.50        10/24/2010
+ *
+ * The item number and date should be left justified; the unit price should be
+ * right justified. Allow dollar amounts up to $9999.99.
  */
 
 #include <stdio.h>

@@ -1,7 +1,7 @@
 /*
- * Project 6 from chapter 5 of C Programming by K.N. King.
- *
- * Asks the user for an UPC and displays whether or not the UPC is valid.
+ * Project 6 from Chapter 5 of King: Modify the upc.c program of Section 4.1 so
+ * that it checks whether a UPC is valid. After the user enters a UPC, the pro-
+ * gram will display either VALID or NOT VALID.
  */
 
 #include <stdio.h>

@@ -1,7 +1,9 @@
 /*
- * Project 9 from chapter 6 of C Programming by K.N. King.
- *
- * Calculates the remaining balance on a loan after a given number of payments.
+ * Project 9 from Chapter 6 of King: Programming Project 8 in Chapter 2 asked
+ * you to write a program that calculates the remaining balance on a loan after
+ * the first, second, and third monthly payments. Modify the program so that it
+ * also asks the user to enter the number of payments and then displays the
+ * balance remaining after each of these payments.
  */
 
 #include <stdio.h>

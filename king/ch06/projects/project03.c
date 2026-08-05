@@ -1,8 +1,9 @@
 /*
- * Project 3 from chapter 6 of C Programming by K.N. King.
+ * Project 3 from Chapter 6 of King: Write a program that asks the user to enter
+ * a fraction, then reduces the fraction to lowest common terms:
  *
- * Asks the user to enter a fraction, then reduces the fraction to lowest
- * terms.
+ *     Enter a fraction: 6/12
+ *     In lowest terms: 1/2
  */
 
 #include <stdio.h>

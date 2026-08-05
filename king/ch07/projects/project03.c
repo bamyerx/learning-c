@@ -1,5 +1,5 @@
 /*
- * Project 3 of chapter 7 of King: Modify the sum2.c program of section 7.1 to
+ * Project 3 of Chapter 7 of King: Modify the sum2.c program of section 7.1 to
  * sum a series of double values.
  */
 

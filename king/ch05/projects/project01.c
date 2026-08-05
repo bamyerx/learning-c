@@ -1,9 +1,11 @@
 /*
- * Project 1 of chapter 5 of C Programming by K.N. King.
+ * Project 1 of Chapter 5 of King: Write a program that calculates how many
+ * digits a number contains:
  *
- * Calculates how many digits a number contains.
+ *     Enter a number: 374
+ *     The number 374 has 3 digits
  *
- * Note: It is assumed that the number has no more than four digits.
+ * You may assume that the number has no more than four digits.
  */
 
 #include <stdio.h>

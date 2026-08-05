@@ -1,7 +1,12 @@
 /*
- * Project 7 of chapter 5 of C Programming by K.N. King.
+ * Project 7 from Chapter 5 of King: Write a program that finds the largest and
+ * smallest of four integers entered by the user:
  *
- * Finds the largest and smallest of four integers entered by the user.
+ *     Enter four integers: 21 43 10 35
+ *     Largest: 43
+ *     Smallest: 10
+ *
+ * Use as few if statements as possible.
  */
 
 #include <stdio.h>

@@ -1,10 +1,8 @@
 /*
- * Project 12 from chapter 6 of C Programming by K.N. King.
- *
- * Approximates e (Euler's Number) by computing the value of
- *             1 + 1/1! + 1/2! + 1/3! + ... + 1/n!
- * until the current term becomes less than epsilon, where epsilon is a small
- * floating-point number entered by the user.
+ * Project 12 from Chapter 6 of King: Modify programming Project 11 so that the
+ * program continues adding terms until the current term becomes less than 
+ * epsilon, where epsilon is a small (floating-point) number entered by the
+ * user.
  */
 
 #include <stdio.h>

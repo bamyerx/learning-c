@@ -1,8 +1,9 @@
 /*
- * Project 1 from chapter 3 of C Programming by K.N. King.
+ * Project 1 from Chapter 3 of King: Write a program that accepts a date from
+ * the user in the form mm/dd/yyyy and then displays it in the form yyyymmdd:
  *
- * Accepts a date from the user in the form mm/dd/yyyy and then displays it in
- * the form yyyymmdd.
+ *     Enter a date (mm/dd/yyyy): 2/17/2011
+ *     You entered the date 20110217
  */
 
 #include <stdio.h>

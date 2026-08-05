@@ -1,10 +1,7 @@
 /*
- * Project 3 from chapter 4 of C Programming by K.N. King.
- *
- * Asks the user to enter a three-digit number, then prints the number with
- * its digits reversed.
- *
- * Note: must reverse without using arithmetic.
+ * Project 3 from Chapter 4 of King: Rewrite the program in Programming Project
+ * 2 so that it prints the reversal of a three-digit number without using arith-
+ * metic to split the number into digits.
  */
 
 #include <stdio.h>

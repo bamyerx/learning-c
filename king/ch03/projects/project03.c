@@ -1,7 +1,13 @@
 /*
- * Project 3 from chapter 3 of C Programming by K.N. King.
+ * Project 3 from Chapter 3 of King: Write a program that breaks down an ISBN
+ * entered by the user:
  *
- * Breaks down an ISBN-13 entered by the user.
+ *     Enter ISBN: 978-0-393-97950-3
+ *     GS1 Prefix: 978
+ *     Group identifier: 0
+ *     Publisher code: 393
+ *     Item number: 97950
+ *     Check digit: 3
  */
 
 #include <stdio.h>

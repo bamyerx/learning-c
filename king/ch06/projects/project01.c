@@ -1,11 +1,18 @@
 /*
- * Project 1 from chapter 6 of C Programming by K.N. King.
+ * Project 1 from Chapter 6 of King: Write a program that finds the largest in a
+ * series of numbers entered by the user. When the user enters 0 or a negative
+ * number, the program must display the largest nonnegative number entered:
  *
- * Finds the largest in a series of numbers entered by the user.
+ *     Enter a number: 60
+ *     Enter a number 38.3
+ *     Enter a number: 4.89
+ *     Enter a number: 100.62
+ *     Enter a number: 75.2295
+ *     Enter a number: 0
  *
- * This program prompts the user to enter numbers one by one. When the user
- * enters 0 or a negative number, the program displays the largest nonnegative
- * number entered.
+ *     The largest number entered was 100.62
+ *
+ * Notice that the numbers aren't necessarily integers.
  */
 
 #include <stdio.h>

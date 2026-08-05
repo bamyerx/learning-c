@@ -1,7 +1,12 @@
 /*
- * Project 4 from chapter 4 of C Programming by K.N. King.
+ * Project 4 from Chapter 4 of King: Write a program that reads an integer
+ * entered by the user and displays it in octal (base 8):
  *
- * Reads an integer entered by the user and displays it in octal.
+ *     Enter a number between 0 and 32767: 1953
+ *     In octal, your number is: 03641
+ *
+ * The output should be displayed using five digits, even if fewer digits are
+ * sufficient.
  */
 
 #include <stdio.h>

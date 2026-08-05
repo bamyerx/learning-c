@@ -1,20 +1,24 @@
 /*
- * Project 8 from chapter 5 of C Programming by K.N. King.
+ * Project 8 from Chapter 5 of King: The following table shows the daily flights
+ * from one city to another:
  *
- * Asks the user to enter a 24-hour format time and then displays the
- * departure and arrival times for the flight whose departure time is closest
- * to that entered by the user.
+ *     Departure Time    Arrival Time
+ *         8:00 AM         10:16 AM
+ *         9:43 AM         11:52 AM
+ *        11:19 AM          1:31 PM
+ *        12:47 PM          3:00 PM
+ *         2:00 PM          4:08 PM
+ *         3:45 PM          5:55 PM
+ *         7:00 PM          9:20 PM
+ *         9:45 PM         11:58 PM
  *
- * Daily Flight Table:
- * Departure Time    Arrival Time
- *        8:00 AM        10:16 AM
- *        9:43 AM        11:52 AM
- *       11:19 AM         1:31 PM
- *       12:47 PM         3:00 PM
- *        2:00 PM         4:08 PM
- *        3:45 PM         5:55 PM
- *        7:00 PM         9:20 PM
- *        9:45 PM        11:58 PM
+ * Write a program that asks the user to enter a time (expressed in hours and
+ * minutes, using the 24-hour clock). The program then displays the departure
+ * and arrival times for the flight whose departure time is closest to that
+ * entered by the user:
+ *
+ *     Enter a 24-hour time: 13:15
+ *     Closest departure time is 12:47 p.m., arriving at 3:00 p.m.
  */
 
 #include <stdio.h>

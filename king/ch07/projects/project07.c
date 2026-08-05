@@ -1,5 +1,5 @@
 /*
- * Project 7 from chapter 7 of King: Modify Programming Project 6 from Chapter
+ * Project 7 from Chapter 7 of King: Modify Programming Project 6 from Chapter
  * 3 so that the user may add, subtract, multiply, or divide two fractions (by
  * entering either +, -, *, or / between the fractions).
  */

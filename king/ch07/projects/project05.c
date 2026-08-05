@@ -1,5 +1,5 @@
 /*
- * Project 5 from chapter 7 of King: In the SCRABBLE Crossword Game, players
+ * Project 5 from Chapter 7 of King: In the SCRABBLE Crossword Game, players
  * form words using small tiles, each containing a letter and a face value.
  * The face value varies from one letter to another, based on the letter's
  * rarity. (Here are the face values: 1: AEILNORSTU, 2: DG, 3: BCMP, 4: FHVWY,

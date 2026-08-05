@@ -1,8 +1,16 @@
 /*
- * Project 8 from chapter 6 of C Programming by K.N. King.
+ * Project 8 from Chapter 6 of King: Write a program that prints a one-month
+ * calendar. The user specifies the number of days in the month and the day of
+ * the week on which the month begins:
  *
- * Prints a one-month calendar. The user specifies the number of days in the
- * month and the day of the week on which the month begins.
+ *     Enter number of days in month: 31
+ *     Enter starting day of the week (1=Sun, 7=Sat): 3
+ *
+ *            1  2  3  4  5
+ *      6  7  8  9 10 11 12
+ *     13 14 15 16 17 18 19
+ *     20 21 22 23 24 25 26
+ *     27 28 29 30 31
  */
 
 #include <stdio.h>

@@ -1,9 +1,8 @@
 /*
- * Project 5 from chapter 6 of C Programming by K.N. King.
- *
- * Asks the user to enter a number, then prints the number with its digits
- * reversed.
- *
+ * Project 5 from Chapter 6 of King: Programming Project 1 in Chapter 4 asked
+ * you to write a program that displays a two-digit number with its digits
+ * reversed. Generalize the program so that the number can have one, two, three,
+ * or more digits.
  */
 
 #include <stdio.h>

@@ -1,7 +1,10 @@
 /*
- * Project 6 of chapter 4 of C Programming by K.N. King.
+ * Project 6 of Chapter 4 of King: Modify the upc.c program of Section 4.1 so
+ * that it calculates the check digit for an European Article Number (EAN). The
+ * user will enter the first 12 digits of the EAN as a single number:
  *
- * Computes a European Article Number check digit.
+ *     Enter the first 12 digits of an EAN: 869148426000
+ *     Check digit: 8
  */
 
 #include <stdio.h>

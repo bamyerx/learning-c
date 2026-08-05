@@ -1,5 +1,5 @@
 /*
- * Project 4 of chapter 7 of King: Write a program that translates an alphabetic
+ * Project 4 of Chapter 7 of King: Write a program that translates an alphabetic
  * phone number into numeric form:
  * 
  *    Enter phone number: CALLATT

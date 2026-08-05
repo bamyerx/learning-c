@@ -1,9 +1,15 @@
 /*
- * Project 10 from chapter 6 C Programming by K.N. King.
+ * Project 10 from Chapter 6 of King: Programming Project 9 in Chapter 5 asked
+ * you to write a program that determines which of two dates come earlier on the
+ * calendar. Generalize the program so that the user may enter any number of
+ * dates. The user will enter 0/0/0 to indicate that no more dates will be
+ * entered:
  *
- * Prompts the user to enter dates and then indicates which date comes earliest
- * on the calendar. The user can enter 0/0/0 to indicate that no more dates
- * will be entered.
+ *     Enter a date (mm/dd/yy): 3/6/08
+ *     Enter a date (mm/dd/yy): 5/17/07
+ *     Enter a date (mm/dd/yy): 6/3/07
+ *     Enter a date (mm/dd/yy): 0/0/0
+ *     5/17/07 is the earliest date
  */
 
 #include <stdio.h>

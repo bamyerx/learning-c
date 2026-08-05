@@ -1,7 +1,7 @@
 /*
- * Project 7 from chapter 6 of C Programming by K.N. King.
- *
- * Prints a table of squares using an odd method.
+ * Project 7 from Chapter 6 of King: Rearrange the square3.c program so that the
+ * for loop initializes i, tests i, and increments i. Don't rewrite the program;
+ * in particular, don't use any multiplications.
  */
 
 #include <stdio.h>

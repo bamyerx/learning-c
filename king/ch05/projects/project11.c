@@ -1,8 +1,9 @@
 /*
- * Project 11 from chapter 5 of C Programming by K.N. King.
+ * Project 11 from Chapter 5 of King: Write a program that asks the user for a
+ * two-digit number, then prints the English word for the number:
  *
- * Asks the user for a two-digit number, then prints the English word for the
- * number.
+ *     Enter a two-digit number: 45
+ *     You entered the number forty-five.
  */
 
 #include <stdio.h>

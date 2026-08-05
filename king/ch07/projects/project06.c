@@ -1,4 +1,8 @@
-/* Determine the sizes of types on this machine. */
+/*
+ * Project 6 from Chapter 7 of King: Write a program that prints the values of
+ * sizeof(int), sizeof(short), sizeof(long), sizeof(float), sizeof(double), and
+ * sizeof(long double).
+ */
 
 #include <stdio.h>
 
