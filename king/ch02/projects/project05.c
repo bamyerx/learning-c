@@ -1,7 +1,8 @@
 /*
- * Project #5 from chapter 2 of C Programming by K.N. King.
+ * Project 5 from Chapter 2 of King: Write a program that asks the user to enter
+ * a value of x and then displays the value of the following polynomial:
  *
- * Displays the value of 3x^5+2x^4-5x^3-x^2+7x-6 for a user-defined value of x.
+ *     3x^5+2x^4-5x^3-x^2+7x-6
  */
 
 #include <stdio.h>

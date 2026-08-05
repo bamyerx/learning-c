@@ -1,18 +1,24 @@
 /*
- * Project #1 from chapter 2 of C Programming by K.N. King.
+ * Project 1 from Chapter 2 of King: Write a program that uses printf to display
+ * the following picture on the screen:
  *
- * Prints a check mark pattern on the screen.
+ *            *
+ *           *
+ *          *
+ *     *   *
+ *      * *
+ *       *
  */
 
 #include <stdio.h>
 
 int main(void) {
-    printf("        *\n");
-    printf("       *\n");
-    printf("      *\n");
-    printf("     *\n");
-    printf("*   *\n");
-    printf(" * *\n");
-    printf("  *\n");
-    return 0;
+	printf("        *\n");
+	printf("       *\n");
+	printf("      *\n");
+	printf("     *\n");
+	printf("*   *\n");
+	printf(" * *\n");
+	printf("  *\n");
+	return 0;
 }

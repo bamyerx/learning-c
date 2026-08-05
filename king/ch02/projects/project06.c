@@ -1,8 +1,8 @@
 /*
- * Project #6 from chapter 2 of C Programming by K.N. King.
+ * Project 6 from Chapter 2 of King: Modify the program of Programming Project 5
+ * so that the polynomial is evaluated using the following formula:
  *
- * Displays the value of 3x^5+2x^4-5x^3-x^2+7x-6 for a user-defined value of x
- * using Horner's rule for evaluation.
+ *     ((((3x^5)x - 5)x - 1)x + 7)x - 6
  */
 
 #include <stdio.h>
